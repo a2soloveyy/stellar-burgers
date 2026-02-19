@@ -8,12 +8,16 @@ const modalRoot = document.getElementById('modals');
 
 export const Modal: FC<TModalProps> = memo(({ title, onClose, children }) => {
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const handleEsc = (e: KeyboardEvent) => {
       e.key === 'Escape' && onClose();
     };
 
     document.addEventListener('keydown', handleEsc);
     return () => {
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', handleEsc);
     };
   }, [onClose]);

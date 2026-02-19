@@ -1,3 +1,4 @@
+import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 export const selectConstructorItems = (state: RootState) => ({
@@ -12,6 +13,15 @@ export const selectConstructorOrderModalData = (state: RootState) =>
 export const selectIngredients = (state: RootState) => state.ingredients.items;
 export const selectIngredientsLoading = (state: RootState) =>
   state.ingredients.isLoading;
+export const selectBuns = createSelector([selectIngredients], (ingredients) =>
+  ingredients.filter((ingredient) => ingredient.type === 'bun')
+);
+export const selectMains = createSelector([selectIngredients], (ingredients) =>
+  ingredients.filter((ingredient) => ingredient.type === 'main')
+);
+export const selectSauces = createSelector([selectIngredients], (ingredients) =>
+  ingredients.filter((ingredient) => ingredient.type === 'sauce')
+);
 
 export const selectFeedOrders = (state: RootState) => state.feed.orders;
 export const selectFeedMeta = (state: RootState) => ({
