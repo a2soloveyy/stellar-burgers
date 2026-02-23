@@ -58,7 +58,7 @@
 }
 
 .list::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
   background-color: #2f2f37;
 }
 
