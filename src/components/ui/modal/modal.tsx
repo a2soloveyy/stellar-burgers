@@ -9,7 +9,7 @@ import { ModalOverlayUI } from '@ui';
 export const ModalUI: FC<TModalUIProps> = memo(
   ({ title, onClose, children }) => (
     <>
-      <div className={styles.modal}>
+      <div className={styles.modal} data-cy='modal'>
         <div
           className={`${styles.header} ${!title ? styles.header_no_title : ''}`}
         >
@@ -24,6 +24,7 @@ export const ModalUI: FC<TModalUIProps> = memo(
             className={styles.button}
             type='button'
             onClick={onClose}
+            data-cy='modal-close'
             aria-label='Закрыть'
           >
             <CloseIcon type='primary' />
